@@ -1,0 +1,22 @@
+{
+  "name": "catalogo-ecommerce-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vanguard Swiss-Industrial E-Commerce Platform with 3D Three.js, Nuxt 3 & NestJS",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=apps/backend\" \"npm run dev --workspace=apps/storefront\"",
+    "dev:backend": "npm run dev --workspace=apps/backend",
+    "dev:storefront": "npm run dev --workspace=apps/storefront",
+    "build": "npm run build --workspace=apps/backend && npm run build --workspace=apps/storefront",
+    "lint": "npm run lint --workspace=apps/backend && npm run lint --workspace=apps/storefront"
+  },
+  "devDependencies": {
+    "@oxc-minify/binding-wasm32-wasi": "^0.143.0",
+    "@oxc-parser/binding-wasm32-wasi": "^0.143.0",
+    "@oxc-transform/binding-wasm32-wasi": "^0.143.0",
+    "concurrently": "^8.2.2"
+  }
+}

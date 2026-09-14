@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Nuxt 3 & Nitro Build Output
+.nuxt/
+.output/
+.nitro/
+.cache/
+
+# NestJS Build Output
+dist/
+apps/backend/dist/
+
+# Local SQLite databases & uploads
+*.db
+*.db-journal
+apps/backend/prisma/*.db
+apps/backend/uploads/*
+!apps/backend/uploads/.gitkeep
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Explicitly ensure storefront public assets and images/gifs are tracked
+!apps/storefront/public/
+!apps/storefront/public/**

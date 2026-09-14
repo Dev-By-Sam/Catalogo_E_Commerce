@@ -1,0 +1,56 @@
+name: Continuous Integration & Build Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  backend-test-and-build:
+    name: Backend (NestJS + Prisma) Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'apps/backend/package-lock.json'
+
+      - name: Install Dependencies
+        working-directory: ./apps/backend
+        run: npm ci
+
+      - name: Generate Prisma Client
+        working-directory: ./apps/backend
+        run: npx prisma generate
+
+      - name: Build Backend
+        working-directory: ./apps/backend
+        run: npm run build
+
+  storefront-build:
+    name: Storefront (Nuxt 3 SSR) Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'apps/storefront/package-lock.json'
+
+      - name: Install Dependencies
+        working-directory: ./apps/storefront
+        run: npm ci
+
+      - name: Build Nuxt 3 App
+        working-directory: ./apps/storefront
+        run: npm run build

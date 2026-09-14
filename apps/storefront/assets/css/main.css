@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-[#080809] text-[#e8eaed] font-sans antialiased overflow-x-hidden selection:bg-[#00f0ff] selection:text-black;
+  }
+
+  /* Custom Ultra-Thin Industrial Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080809;
+    border-left: 1px solid #1c1d22;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2e313b;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00f0ff;
+  }
+}
+
+@layer utilities {
+  .hairline-b {
+    border-bottom: 1px solid #1c1d22;
+  }
+  .hairline-t {
+    border-top: 1px solid #1c1d22;
+  }
+  .hairline-l {
+    border-left: 1px solid #1c1d22;
+  }
+  .hairline-r {
+    border-right: 1px solid #1c1d22;
+  }
+  .hairline-all {
+    border: 1px solid #1c1d22;
+  }
+  
+  .hairline-glow:hover {
+    border-color: #00f0ff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+  }
+
+  /* Fluid typography */
+  .fluid-hero-text {
+    font-size: clamp(3.2rem, 9vw, 9.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+  }
+
+  .fluid-title {
+    font-size: clamp(2rem, 4.5vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+}
+
+/* Hide default cursor only when custom crosshair is enabled on desktop */
+@media (min-width: 1024px) {
+  body.custom-cursor-active {
+    cursor: none;
+  }
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active input,
+  body.custom-cursor-active select,
+  body.custom-cursor-active textarea {
+    cursor: none;
+  }
+}
