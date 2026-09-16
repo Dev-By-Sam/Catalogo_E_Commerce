@@ -47,7 +47,10 @@ jobs:
           cache-dependency-path: 'package-lock.json'
 
       - name: Install Dependencies
-        run: npm ci
+        # npm ci falla en Linux con lockfiles generados en Windows porque no registra
+        # los binarios nativos de la plataforma (esbuild, rolldown, rollup, oxc, lightningcss).
+        # Usamos npm install para que npm resuelva los binarios nativos del OS actual.
+        run: npm install --no-audit --no-fund
 
       - name: Build Nuxt 3 App
         working-directory: ./apps/storefront
