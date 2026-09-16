@@ -20,6 +20,7 @@
     "concurrently": "^8.2.2"
   },
   "optionalDependencies": {
+    "@esbuild/linux-x64": "^0.28.2",
     "@oxc-minify/binding-linux-x64-gnu": "^0.143.0",
     "@oxc-parser/binding-linux-x64-gnu": "^0.143.0",
     "@oxc-transform/binding-linux-x64-gnu": "^0.143.0",
